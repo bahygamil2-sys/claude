@@ -1,6 +1,7 @@
 import { prisma } from "../../lib/prisma";
 import { ApiError } from "../../lib/ApiError";
 import { generateInviteToken } from "../../lib/tokens";
+import { assertBranchesBelongToBrand } from "../../lib/branchAccess";
 import type { BrandAccessTokenPayload } from "../../lib/tokens";
 import type { InviteBrandUserInput, UpdateBrandUserInput } from "./brandUsers.schema";
 
@@ -9,13 +10,6 @@ const INVITE_TTL_DAYS = 7;
 function sanitize<T extends { passwordHash: string | null }>(user: T) {
   const { passwordHash: _passwordHash, ...rest } = user;
   return rest;
-}
-
-/** Rejects any branchId that doesn't belong to this brand — never trust a client-supplied id on its own. */
-async function assertBranchesBelongToBrand(brandId: string, branchIds: string[]) {
-  if (branchIds.length === 0) return;
-  const count = await prisma.restaurantBranch.count({ where: { id: { in: branchIds }, brandId } });
-  if (count !== branchIds.length) throw ApiError.badRequest("One or more branches do not belong to this brand");
 }
 
 export async function list(user: BrandAccessTokenPayload) {

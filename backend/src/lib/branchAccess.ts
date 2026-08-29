@@ -26,3 +26,10 @@ export async function assertBranchAccess(user: BrandAccessTokenPayload, branchId
   const allowed = await getAccessibleBranchIds(user);
   if (!allowed?.includes(branchId)) throw ApiError.forbidden("You do not have access to this branch");
 }
+
+/** Rejects any branchId that doesn't belong to this brand — never trust a client-supplied id on its own. */
+export async function assertBranchesBelongToBrand(brandId: string, branchIds: string[]): Promise<void> {
+  if (branchIds.length === 0) return;
+  const count = await prisma.restaurantBranch.count({ where: { id: { in: branchIds }, brandId } });
+  if (count !== branchIds.length) throw ApiError.badRequest("One or more branches do not belong to this brand");
+}
