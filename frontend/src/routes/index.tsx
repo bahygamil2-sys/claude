@@ -15,6 +15,13 @@ import CustomerOrdersListPage from "@/features/orders/CustomerOrdersListPage";
 import CustomerOrderDetailPage from "@/features/orders/CustomerOrderDetailPage";
 import ProfilePage from "@/features/profile/ProfilePage";
 import OrderTrackingPage from "@/features/tracking/OrderTrackingPage";
+import { RestaurantDashboardProvider } from "@/features/restaurant-dashboard/RestaurantDashboardContext";
+import RestaurantOverviewPage from "@/features/restaurant-dashboard/RestaurantOverviewPage";
+import RestaurantOrdersFeedPage from "@/features/restaurant-dashboard/RestaurantOrdersFeedPage";
+import RestaurantOrderDetailPage from "@/features/restaurant-dashboard/RestaurantOrderDetailPage";
+import MenuManagementPage from "@/features/restaurant-dashboard/MenuManagementPage";
+import RestaurantReportsPage from "@/features/restaurant-dashboard/RestaurantReportsPage";
+import RestaurantSettingsPage from "@/features/restaurant-dashboard/RestaurantSettingsPage";
 import { RequireAuth } from "./RequireAuth";
 import { RequireRole } from "./RequireRole";
 
@@ -77,16 +84,18 @@ export function AppRoutes() {
         path="/restaurant-dashboard"
         element={
           <RequireRole roles={["RESTAURANT_OWNER", "ADMIN"]}>
-            <RestaurantDashboardLayout />
+            <RestaurantDashboardProvider>
+              <RestaurantDashboardLayout />
+            </RestaurantDashboardProvider>
           </RequireRole>
         }
       >
-        <Route index element={<PlaceholderPage title="Overview" />} />
-        <Route path="orders" element={<PlaceholderPage title="Orders" />} />
-        <Route path="orders/:id" element={<PlaceholderPage title="Order Detail" />} />
-        <Route path="menu" element={<PlaceholderPage title="Menu" />} />
-        <Route path="reports" element={<PlaceholderPage title="Reports" />} />
-        <Route path="settings" element={<PlaceholderPage title="Settings" />} />
+        <Route index element={<RestaurantOverviewPage />} />
+        <Route path="orders" element={<RestaurantOrdersFeedPage />} />
+        <Route path="orders/:id" element={<RestaurantOrderDetailPage />} />
+        <Route path="menu" element={<MenuManagementPage />} />
+        <Route path="reports" element={<RestaurantReportsPage />} />
+        <Route path="settings" element={<RestaurantSettingsPage />} />
       </Route>
 
       <Route

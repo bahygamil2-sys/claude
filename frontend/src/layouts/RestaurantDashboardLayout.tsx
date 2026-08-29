@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { BarChart3, ClipboardList, LayoutGrid, Settings, UtensilsCrossed } from "lucide-react";
 import { DashboardShell } from "./DashboardShell";
+import { RestaurantPicker } from "@/features/restaurant-dashboard/RestaurantPicker";
 
 export function RestaurantDashboardLayout() {
   const { t } = useTranslation();
@@ -13,5 +14,5 @@ export function RestaurantDashboardLayout() {
     { to: "/restaurant-dashboard/settings", label: t("restaurant:nav.settings"), icon: <Settings size={17} /> },
   ];
 
-  return <DashboardShell navItems={navItems} sectionLabel={t("nav.restaurantDashboard")} />;
+  return <DashboardShell navItems={navItems} sectionLabel={t("nav.restaurantDashboard")} topBarExtra={<RestaurantPicker />} />;
 }

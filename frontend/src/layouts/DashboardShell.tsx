@@ -14,7 +14,15 @@ export interface DashboardNavItem {
   end?: boolean;
 }
 
-export function DashboardShell({ navItems, sectionLabel }: { navItems: DashboardNavItem[]; sectionLabel: string }) {
+export function DashboardShell({
+  navItems,
+  sectionLabel,
+  topBarExtra,
+}: {
+  navItems: DashboardNavItem[];
+  sectionLabel: string;
+  topBarExtra?: ReactNode;
+}) {
   const { t } = useTranslation();
   const user = useAuthStore((s) => s.user);
   const logout = useLogout();
@@ -82,7 +90,10 @@ export function DashboardShell({ navItems, sectionLabel }: { navItems: Dashboard
             <Menu size={20} />
           </button>
           <span className="hidden text-sm text-neutral-500 md:block">{sectionLabel}</span>
-          <LanguageToggle />
+          <div className="flex items-center gap-3">
+            {topBarExtra}
+            <LanguageToggle />
+          </div>
         </header>
         <main className="flex-1 p-4 sm:p-6">
           <Outlet />

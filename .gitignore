@@ -36,3 +36,8 @@ coverage/
 
 # Prisma
 backend/prisma/dev.db
+
+# TypeScript incremental build info / project-reference emit
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
