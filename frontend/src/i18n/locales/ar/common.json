@@ -1,0 +1,71 @@
+{
+  "appName": "رأي",
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "branches": "الفروع",
+    "surveys": "الاستبيانات",
+    "team": "الفريق",
+    "settings": "الإعدادات",
+    "adminOverview": "نظرة عامة",
+    "brands": "العلامات التجارية",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "submit": "إرسال",
+    "search": "بحث",
+    "close": "إغلاق",
+    "retry": "إعادة المحاولة",
+    "copy": "نسخ",
+    "regenerate": "إعادة توليد",
+    "publish": "نشر",
+    "duplicate": "نسخ مطابق",
+    "invite": "دعوة"
+  },
+  "state": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "notFound": "غير موجود",
+    "empty": "لا يوجد شيء هنا بعد",
+    "unauthorized": "ليس لديك صلاحية الوصول لهذه الصفحة",
+    "tryAgain": "حاول مرة أخرى"
+  },
+  "pagination": {
+    "summary": "صفحة {{page}} من {{totalPages}} · {{total}} إجمالي",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "roles": {
+    "OWNER": "مالك",
+    "MANAGER": "مدير فرع"
+  },
+  "brandStatus": {
+    "ACTIVE": "نشط",
+    "SUSPENDED": "موقوف"
+  },
+  "surveyStatus": {
+    "DRAFT": "مسودة",
+    "PUBLISHED": "منشور",
+    "CLOSED": "مغلق"
+  },
+  "questionType": {
+    "SHORT_TEXT": "نص قصير",
+    "LONG_TEXT": "نص طويل",
+    "SINGLE_CHOICE": "اختيار واحد",
+    "MULTI_CHOICE": "اختيار متعدد",
+    "DROPDOWN": "قائمة منسدلة",
+    "RATING": "تقييم",
+    "NPS": "مؤشر الترشيح الصافي",
+    "YES_NO": "نعم / لا",
+    "DATE": "تاريخ"
+  },
+  "language": "اللغة"
+}

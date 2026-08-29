@@ -1,0 +1,71 @@
+{
+  "appName": "Ra'y",
+  "nav": {
+    "dashboard": "Dashboard",
+    "branches": "Branches",
+    "surveys": "Surveys",
+    "team": "Team",
+    "settings": "Settings",
+    "adminOverview": "Overview",
+    "brands": "Brands",
+    "logout": "Log Out",
+    "login": "Log In"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "close": "Close",
+    "retry": "Retry",
+    "copy": "Copy",
+    "regenerate": "Regenerate",
+    "publish": "Publish",
+    "duplicate": "Duplicate",
+    "invite": "Invite"
+  },
+  "state": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Not found",
+    "empty": "Nothing here yet",
+    "unauthorized": "You don't have access to this page",
+    "tryAgain": "Try again"
+  },
+  "pagination": {
+    "summary": "Page {{page}} of {{totalPages}} · {{total}} total",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "roles": {
+    "OWNER": "Owner",
+    "MANAGER": "Manager"
+  },
+  "brandStatus": {
+    "ACTIVE": "Active",
+    "SUSPENDED": "Suspended"
+  },
+  "surveyStatus": {
+    "DRAFT": "Draft",
+    "PUBLISHED": "Published",
+    "CLOSED": "Closed"
+  },
+  "questionType": {
+    "SHORT_TEXT": "Short Text",
+    "LONG_TEXT": "Long Text",
+    "SINGLE_CHOICE": "Single Choice",
+    "MULTI_CHOICE": "Multiple Choice",
+    "DROPDOWN": "Dropdown",
+    "RATING": "Rating",
+    "NPS": "Net Promoter Score",
+    "YES_NO": "Yes / No",
+    "DATE": "Date"
+  },
+  "language": "Language"
+}
