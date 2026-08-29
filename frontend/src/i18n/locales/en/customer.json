@@ -72,6 +72,17 @@
     "trackOrder": "Track Your Order",
     "viewOrders": "View My Orders"
   },
+  "tracking": {
+    "title": "Track Your Order",
+    "eta": "Estimated arrival: {{minutes}} min",
+    "waitingForDriver": "Waiting for a driver to be assigned",
+    "mapUnavailable": "Live map unavailable",
+    "mapUnavailableHint": "This deployment doesn't have a Google Maps API key configured, so the live map can't render — status updates below still work in real time.",
+    "legendRestaurant": "Restaurant",
+    "legendDestination": "Delivery address",
+    "legendDriver": "Driver",
+    "notTrackableYet": "Live tracking starts once the restaurant confirms your order."
+  },
   "orders": {
     "title": "My Orders",
     "empty": "You haven't placed any orders yet",

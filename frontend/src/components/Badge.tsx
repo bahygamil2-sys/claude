@@ -12,9 +12,14 @@ const TONE_CLASSES: Record<Tone, string> = {
   brand: "bg-brand-100 text-brand-700",
 };
 
-export function Badge({ tone = "neutral", children, className }: { tone?: Tone; children: ReactNode; className?: string }) {
+export function Badge({
+  tone = "neutral",
+  children,
+  className,
+  ...rest
+}: { tone?: Tone; children: ReactNode; className?: string } & React.HTMLAttributes<HTMLSpanElement>) {
   return (
-    <span className={clsx("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium", TONE_CLASSES[tone], className)}>
+    <span className={clsx("inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium", TONE_CLASSES[tone], className)} {...rest}>
       {children}
     </span>
   );
@@ -38,7 +43,11 @@ const RESTAURANT_STATUS_TONE: Record<string, Tone> = {
 };
 
 export function OrderStatusBadge({ status, label }: { status: string; label: string }) {
-  return <Badge tone={ORDER_STATUS_TONE[status] ?? "neutral"}>{label}</Badge>;
+  return (
+    <Badge tone={ORDER_STATUS_TONE[status] ?? "neutral"} data-testid="order-status-badge">
+      {label}
+    </Badge>
+  );
 }
 
 export function RestaurantStatusBadge({ status, label }: { status: string; label: string }) {

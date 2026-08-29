@@ -14,6 +14,7 @@ import CheckoutPage from "@/features/checkout/CheckoutPage";
 import CustomerOrdersListPage from "@/features/orders/CustomerOrdersListPage";
 import CustomerOrderDetailPage from "@/features/orders/CustomerOrderDetailPage";
 import ProfilePage from "@/features/profile/ProfilePage";
+import OrderTrackingPage from "@/features/tracking/OrderTrackingPage";
 import { RequireAuth } from "./RequireAuth";
 import { RequireRole } from "./RequireRole";
 
@@ -53,7 +54,7 @@ export function AppRoutes() {
           path="/orders/:id/tracking"
           element={
             <RequireAuth>
-              <PlaceholderPage title="Order Tracking" />
+              <OrderTrackingPage />
             </RequireAuth>
           }
         />

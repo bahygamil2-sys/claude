@@ -72,6 +72,17 @@
     "trackOrder": "تتبع طلبك",
     "viewOrders": "عرض طلباتي"
   },
+  "tracking": {
+    "title": "تتبع طلبك",
+    "eta": "الوصول المتوقع خلال {{minutes}} دقيقة",
+    "waitingForDriver": "بانتظار تعيين سائق التوصيل",
+    "mapUnavailable": "الخريطة المباشرة غير متاحة",
+    "mapUnavailableHint": "لم يتم إعداد مفتاح Google Maps API لهذه النسخة، لذلك لا يمكن عرض الخريطة المباشرة — تحديثات الحالة أدناه ما زالت تعمل لحظيًا.",
+    "legendRestaurant": "المطعم",
+    "legendDestination": "عنوان التوصيل",
+    "legendDriver": "السائق",
+    "notTrackableYet": "يبدأ التتبع المباشر بمجرد تأكيد المطعم لطلبك."
+  },
   "orders": {
     "title": "طلباتي",
     "empty": "لم تقم بأي طلبات بعد",

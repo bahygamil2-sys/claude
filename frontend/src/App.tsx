@@ -8,10 +8,12 @@ import i18n from "@/i18n";
 import { AppRoutes } from "@/routes";
 import { ToastContainer } from "@/components/ToastContainer";
 import { FullPageSpinner } from "@/components/Spinner";
+import { useSocketConnection } from "@/hooks/useSocketConnection";
 
 export default function App() {
   const language = useUIStore((s) => s.language);
   const [bootstrapped, setBootstrapped] = useState(false);
+  useSocketConnection(bootstrapped);
 
   useEffect(() => {
     document.documentElement.dir = directionForLanguage(language);
