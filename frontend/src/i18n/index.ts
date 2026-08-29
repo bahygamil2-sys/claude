@@ -9,19 +9,21 @@ import restaurant_ar from "./locales/ar/restaurant.json";
 import restaurant_en from "./locales/en/restaurant.json";
 import admin_ar from "./locales/ar/admin.json";
 import admin_en from "./locales/en/admin.json";
+import customer_ar from "./locales/ar/customer.json";
+import customer_en from "./locales/en/customer.json";
 
 export const SUPPORTED_LANGUAGES = ["ar", "en"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 i18n.use(initReactI18next).init({
   resources: {
-    ar: { common: common_ar, auth: auth_ar, restaurant: restaurant_ar, admin: admin_ar },
-    en: { common: common_en, auth: auth_en, restaurant: restaurant_en, admin: admin_en },
+    ar: { common: common_ar, auth: auth_ar, restaurant: restaurant_ar, admin: admin_ar, customer: customer_ar },
+    en: { common: common_en, auth: auth_en, restaurant: restaurant_en, admin: admin_en, customer: customer_en },
   },
   lng: "ar",
   fallbackLng: "en",
   defaultNS: "common",
-  ns: ["common", "auth", "restaurant", "admin"],
+  ns: ["common", "auth", "restaurant", "admin", "customer"],
   interpolation: { escapeValue: false },
   returnEmptyString: false,
 });

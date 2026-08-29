@@ -59,6 +59,11 @@
     "REJECTED": "مرفوض",
     "SUSPENDED": "موقوف"
   },
+  "paymentStatus": {
+    "PENDING": "بانتظار الدفع",
+    "PAID": "تم الدفع",
+    "FAILED": "فشل الدفع"
+  },
   "roles": {
     "CUSTOMER": "عميل",
     "RESTAURANT_OWNER": "صاحب مطعم",

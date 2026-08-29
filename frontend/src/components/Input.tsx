@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, forwardRef } from "react";
+import { type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, forwardRef, useId } from "react";
 import clsx from "clsx";
 
 const FIELD_CLASSES =
@@ -29,29 +29,46 @@ function FieldChrome({ label, error, hint, id, children }: FieldWrapperProps & {
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>, FieldWrapperProps {}
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({ label, error, hint, id, className, ...props }, ref) => (
-  <FieldChrome label={label} error={error} hint={hint} id={id}>
-    <input ref={ref} id={id} className={clsx(FIELD_CLASSES, error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)} {...props} />
-  </FieldChrome>
-));
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ label, error, hint, id, className, ...props }, ref) => {
+  const autoId = useId();
+  const fieldId = id ?? autoId;
+  return (
+    <FieldChrome label={label} error={error} hint={hint} id={fieldId}>
+      <input ref={ref} id={fieldId} className={clsx(FIELD_CLASSES, error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)} {...props} />
+    </FieldChrome>
+  );
+});
 Input.displayName = "Input";
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement>, FieldWrapperProps {}
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({ label, error, hint, id, className, ...props }, ref) => (
-  <FieldChrome label={label} error={error} hint={hint} id={id}>
-    <textarea ref={ref} id={id} className={clsx(FIELD_CLASSES, error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)} {...props} />
-  </FieldChrome>
-));
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({ label, error, hint, id, className, ...props }, ref) => {
+  const autoId = useId();
+  const fieldId = id ?? autoId;
+  return (
+    <FieldChrome label={label} error={error} hint={hint} id={fieldId}>
+      <textarea ref={ref} id={fieldId} className={clsx(FIELD_CLASSES, error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)} {...props} />
+    </FieldChrome>
+  );
+});
 Textarea.displayName = "Textarea";
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement>, FieldWrapperProps {}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(({ label, error, hint, id, className, children, ...props }, ref) => (
-  <FieldChrome label={label} error={error} hint={hint} id={id}>
-    <select ref={ref} id={id} className={clsx(FIELD_CLASSES, "pe-8", error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)} {...props}>
-      {children}
-    </select>
-  </FieldChrome>
-));
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(({ label, error, hint, id, className, children, ...props }, ref) => {
+  const autoId = useId();
+  const fieldId = id ?? autoId;
+  return (
+    <FieldChrome label={label} error={error} hint={hint} id={fieldId}>
+      <select
+        ref={ref}
+        id={fieldId}
+        className={clsx(FIELD_CLASSES, "pe-8", error && "border-red-400 focus:border-red-500 focus:ring-red-100", className)}
+        {...props}
+      >
+        {children}
+      </select>
+    </FieldChrome>
+  );
+});
 Select.displayName = "Select";

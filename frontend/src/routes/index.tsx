@@ -6,6 +6,14 @@ import { AdminDashboardLayout } from "@/layouts/AdminDashboardLayout";
 import { PlaceholderPage } from "@/components/PlaceholderPage";
 import LoginPage from "@/features/auth/LoginPage";
 import RegisterPage from "@/features/auth/RegisterPage";
+import HomePage from "@/features/home/HomePage";
+import RestaurantListPage from "@/features/restaurants/RestaurantListPage";
+import RestaurantDetailPage from "@/features/restaurants/RestaurantDetailPage";
+import CartPage from "@/features/cart/CartPage";
+import CheckoutPage from "@/features/checkout/CheckoutPage";
+import CustomerOrdersListPage from "@/features/orders/CustomerOrdersListPage";
+import CustomerOrderDetailPage from "@/features/orders/CustomerOrderDetailPage";
+import ProfilePage from "@/features/profile/ProfilePage";
 import { RequireAuth } from "./RequireAuth";
 import { RequireRole } from "./RequireRole";
 
@@ -13,15 +21,15 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route element={<PublicLayout />}>
-        <Route path="/" element={<PlaceholderPage title="Home" />} />
-        <Route path="/restaurants" element={<PlaceholderPage title="Restaurants" />} />
-        <Route path="/restaurants/:slug" element={<PlaceholderPage title="Restaurant Detail" />} />
-        <Route path="/cart" element={<PlaceholderPage title="Cart" />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/restaurants" element={<RestaurantListPage />} />
+        <Route path="/restaurants/:slug" element={<RestaurantDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route
           path="/checkout"
           element={
             <RequireAuth>
-              <PlaceholderPage title="Checkout" />
+              <CheckoutPage />
             </RequireAuth>
           }
         />
@@ -29,7 +37,7 @@ export function AppRoutes() {
           path="/orders"
           element={
             <RequireAuth>
-              <PlaceholderPage title="My Orders" />
+              <CustomerOrdersListPage />
             </RequireAuth>
           }
         />
@@ -37,7 +45,7 @@ export function AppRoutes() {
           path="/orders/:id"
           element={
             <RequireAuth>
-              <PlaceholderPage title="Order Detail" />
+              <CustomerOrderDetailPage />
             </RequireAuth>
           }
         />
@@ -53,7 +61,7 @@ export function AppRoutes() {
           path="/profile"
           element={
             <RequireAuth>
-              <PlaceholderPage title="Profile" />
+              <ProfilePage />
             </RequireAuth>
           }
         />

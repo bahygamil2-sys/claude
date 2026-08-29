@@ -59,6 +59,11 @@
     "REJECTED": "Rejected",
     "SUSPENDED": "Suspended"
   },
+  "paymentStatus": {
+    "PENDING": "Payment Pending",
+    "PAID": "Paid",
+    "FAILED": "Payment Failed"
+  },
   "roles": {
     "CUSTOMER": "Customer",
     "RESTAURANT_OWNER": "Restaurant Owner",
