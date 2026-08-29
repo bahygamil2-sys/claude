@@ -66,13 +66,18 @@ model PlatformAdmin {
 }
 
 model AdminRefreshToken {
-  id        String    @id @default(uuid())
-  adminId   String
-  admin     PlatformAdmin @relation(fields: [adminId], references: [id], onDelete: Cascade)
-  tokenHash String
-  expiresAt DateTime
-  revokedAt DateTime?
-  createdAt DateTime  @default(now())
+  id                String    @id @default(uuid())
+  adminId           String
+  admin             PlatformAdmin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  tokenHash         String    @unique
+  expiresAt         DateTime
+  revokedAt         DateTime?
+  // Set when this token is rotated out on refresh — a request presenting an
+  // already-revoked token that HAS this set is expected rotation; one that's
+  // revoked WITHOUT this set (e.g. via logout) reusing an old token is a
+  // theft signal worth reacting to (e.g. revoke the whole chain).
+  replacedByTokenId String?
+  createdAt         DateTime  @default(now())
 
   @@index([adminId])
 }
@@ -131,13 +136,14 @@ model BrandUserBranch {
 }
 
 model BrandUserRefreshToken {
-  id          String    @id @default(uuid())
-  brandUserId String
-  brandUser   BrandUser @relation(fields: [brandUserId], references: [id], onDelete: Cascade)
-  tokenHash   String
-  expiresAt   DateTime
-  revokedAt   DateTime?
-  createdAt   DateTime  @default(now())
+  id                String    @id @default(uuid())
+  brandUserId       String
+  brandUser         BrandUser @relation(fields: [brandUserId], references: [id], onDelete: Cascade)
+  tokenHash         String    @unique
+  expiresAt         DateTime
+  revokedAt         DateTime?
+  replacedByTokenId String?
+  createdAt         DateTime  @default(now())
 
   @@index([brandUserId])
 }
