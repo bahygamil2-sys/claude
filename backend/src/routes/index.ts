@@ -6,6 +6,7 @@ import { branchesRouter } from "../modules/branches/branches.routes";
 import { brandUsersRouter } from "../modules/brandUsers/brandUsers.routes";
 import { adminBrandsRouter } from "../modules/adminBrands/adminBrands.routes";
 import { surveysRouter } from "../modules/surveys/surveys.routes";
+import { publicSurveysRouter } from "../modules/public/publicSurveys.routes";
 
 export const v1Router = Router();
 
@@ -20,7 +21,7 @@ v1Router.use("/branches", branchesRouter);
 v1Router.use("/brand-users", brandUsersRouter);
 v1Router.use("/admin/brands", adminBrandsRouter);
 v1Router.use("/surveys", surveysRouter);
+v1Router.use("/public", publicSurveysRouter);
 
 // Added in later phases:
-//   v1Router.use("/public", publicRouter);
 //   v1Router.use("/admin/reports", adminReportsRouter);

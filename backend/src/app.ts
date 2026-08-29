@@ -7,6 +7,11 @@ import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 export const app = express();
 
+// Exactly one hop: the PaaS reverse proxy in front of this app in production
+// (Railway/Render-style). Needed so express-rate-limit keys public endpoints
+// by the real client IP (X-Forwarded-For) instead of the proxy's.
+app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: env.CORS_ORIGIN,

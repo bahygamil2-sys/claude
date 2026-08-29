@@ -35,8 +35,9 @@ another branch of this same repo — unrelated, no shared code.
   `brandId` taken from the authenticated JWT — never from a client-supplied
   id/param. This is the single control that makes Brand→Branch isolation
   real; treat any code path that skips it as a bug, not a style issue.
-- **Public (unauthenticated) routes** live in their own `routes/public/*`
-  tree, physically separate from `routes/brand/*` and `routes/admin/*`, and
+- **Public (unauthenticated) routes** live in their own `modules/public/*`
+  module, physically separate from every brand- and admin-authenticated
+  module — its router never imports `authenticate`/`requireBrandUser`, and
   return hand-shaped DTOs — never a raw Prisma object spread — since this is
   the one part of the system anyone on the internet can call without logging
   in.
