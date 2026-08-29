@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Env
+.env
+.env.local
+*.env
+!.env.example
+
+# Build output
+dist/
+build/
+frontend/dist/
+backend/dist/
+
+# Uploads (local dev storage)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Testing
+playwright-report/
+test-results/
+coverage/
+
+# Prisma
+backend/prisma/dev.db

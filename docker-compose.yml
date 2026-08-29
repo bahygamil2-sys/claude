@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sufra-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sufra
+      POSTGRES_PASSWORD: sufra_dev_password
+      POSTGRES_DB: sufra
+    ports:
+      - "5432:5432"
+    volumes:
+      - sufra_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sufra -d sufra"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  sufra_postgres_data:
