@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "restaurants": "Restaurants",
+    "users": "Users",
+    "categories": "Categories",
+    "orders": "Orders",
+    "reports": "Reports"
+  }
+}

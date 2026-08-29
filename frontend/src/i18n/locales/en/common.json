@@ -1,0 +1,74 @@
+{
+  "appName": "Sufra",
+  "nav": {
+    "home": "Home",
+    "restaurants": "Restaurants",
+    "cart": "Cart",
+    "orders": "My Orders",
+    "profile": "Profile",
+    "login": "Log In",
+    "register": "Sign Up",
+    "logout": "Log Out",
+    "restaurantDashboard": "Restaurant Dashboard",
+    "adminDashboard": "Admin Dashboard"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "filters": "Filters",
+    "apply": "Apply",
+    "reset": "Reset",
+    "viewAll": "View All",
+    "seeDetails": "See Details",
+    "close": "Close",
+    "retry": "Retry",
+    "approve": "Approve",
+    "reject": "Reject",
+    "suspend": "Suspend",
+    "reactivate": "Reactivate"
+  },
+  "state": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Not found",
+    "empty": "Nothing here yet",
+    "unauthorized": "You don't have access to this page",
+    "tryAgain": "Try again"
+  },
+  "orderStatus": {
+    "PENDING": "Pending",
+    "CONFIRMED": "Confirmed",
+    "PREPARING": "Preparing",
+    "READY_FOR_PICKUP": "Ready for Pickup",
+    "OUT_FOR_DELIVERY": "Out for Delivery",
+    "DELIVERED": "Delivered",
+    "CANCELLED": "Cancelled"
+  },
+  "restaurantStatus": {
+    "PENDING": "Pending Approval",
+    "APPROVED": "Approved",
+    "REJECTED": "Rejected",
+    "SUSPENDED": "Suspended"
+  },
+  "roles": {
+    "CUSTOMER": "Customer",
+    "RESTAURANT_OWNER": "Restaurant Owner",
+    "ADMIN": "Admin"
+  },
+  "currency": "EGP",
+  "language": "Language",
+  "time": {
+    "minutes": "{{count}} min",
+    "today": "Today",
+    "yesterday": "Yesterday"
+  }
+}

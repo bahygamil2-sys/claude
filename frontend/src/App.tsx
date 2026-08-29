@@ -1,30 +1,36 @@
 import { useEffect, useState } from "react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter } from "react-router-dom";
+import { queryClient } from "@/lib/queryClient";
+import { bootstrapSession } from "@/lib/apiClient";
+import { useUIStore, directionForLanguage } from "@/store/uiStore";
+import i18n from "@/i18n";
+import { AppRoutes } from "@/routes";
+import { ToastContainer } from "@/components/ToastContainer";
+import { FullPageSpinner } from "@/components/Spinner";
 
-// Temporary scaffold-verification placeholder. Replaced in the frontend-foundation
-// phase with the real router, providers (React Query, i18n, auth), and layouts.
 export default function App() {
-  const [apiStatus, setApiStatus] = useState<"checking" | "ok" | "error">("checking");
+  const language = useUIStore((s) => s.language);
+  const [bootstrapped, setBootstrapped] = useState(false);
 
   useEffect(() => {
-    fetch("/api/v1/health")
-      .then((res) => (res.ok ? setApiStatus("ok") : setApiStatus("error")))
-      .catch(() => setApiStatus("error"));
+    document.documentElement.dir = directionForLanguage(language);
+    document.documentElement.lang = language;
+    void i18n.changeLanguage(language);
+  }, [language]);
+
+  useEffect(() => {
+    void bootstrapSession().finally(() => setBootstrapped(true));
   }, []);
 
+  if (!bootstrapped) return <FullPageSpinner />;
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-3xl font-bold text-brand-600">سُفرة Sufra</h1>
-      <p className="text-neutral-600">منصة طلب الطعام أونلاين — قيد الإنشاء</p>
-      <p className="text-sm">
-        API:{" "}
-        <span
-          className={
-            apiStatus === "ok" ? "text-green-600" : apiStatus === "error" ? "text-red-600" : "text-neutral-500"
-          }
-        >
-          {apiStatus}
-        </span>
-      </p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <AppRoutes />
+        <ToastContainer />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }

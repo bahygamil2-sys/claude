@@ -1,0 +1,9 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "orders": "Orders",
+    "menu": "Menu",
+    "reports": "Reports",
+    "settings": "Settings"
+  }
+}

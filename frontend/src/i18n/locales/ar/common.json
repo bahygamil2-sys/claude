@@ -1,0 +1,74 @@
+{
+  "appName": "سُفرة",
+  "nav": {
+    "home": "الرئيسية",
+    "restaurants": "المطاعم",
+    "cart": "السلة",
+    "orders": "طلباتي",
+    "profile": "حسابي",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "restaurantDashboard": "لوحة تحكم المطعم",
+    "adminDashboard": "لوحة تحكم الإدارة"
+  },
+  "actions": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "submit": "إرسال",
+    "search": "بحث",
+    "filter": "فلترة",
+    "filters": "الفلاتر",
+    "apply": "تطبيق",
+    "reset": "إعادة تعيين",
+    "viewAll": "عرض الكل",
+    "seeDetails": "عرض التفاصيل",
+    "close": "إغلاق",
+    "retry": "إعادة المحاولة",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "suspend": "إيقاف",
+    "reactivate": "إعادة تفعيل"
+  },
+  "state": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "notFound": "غير موجود",
+    "empty": "لا يوجد شيء هنا بعد",
+    "unauthorized": "ليس لديك صلاحية الوصول لهذه الصفحة",
+    "tryAgain": "حاول مرة أخرى"
+  },
+  "orderStatus": {
+    "PENDING": "قيد الانتظار",
+    "CONFIRMED": "تم التأكيد",
+    "PREPARING": "جاري التحضير",
+    "READY_FOR_PICKUP": "جاهز للاستلام",
+    "OUT_FOR_DELIVERY": "في الطريق إليك",
+    "DELIVERED": "تم التوصيل",
+    "CANCELLED": "ملغي"
+  },
+  "restaurantStatus": {
+    "PENDING": "بانتظار الموافقة",
+    "APPROVED": "مفعّل",
+    "REJECTED": "مرفوض",
+    "SUSPENDED": "موقوف"
+  },
+  "roles": {
+    "CUSTOMER": "عميل",
+    "RESTAURANT_OWNER": "صاحب مطعم",
+    "ADMIN": "مدير"
+  },
+  "currency": "ج.م",
+  "language": "اللغة",
+  "time": {
+    "minutes": "{{count}} دقيقة",
+    "today": "اليوم",
+    "yesterday": "أمس"
+  }
+}
