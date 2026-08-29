@@ -6,5 +6,94 @@
     "categories": "الفئات",
     "orders": "الطلبات",
     "reports": "التقارير"
+  },
+  "overview": {
+    "title": "نظرة عامة على المنصة",
+    "statTotalOrders": "إجمالي الطلبات",
+    "statRevenue": "إجمالي الإيرادات",
+    "statAvgOrder": "متوسط قيمة الطلب",
+    "statCustomers": "العملاء",
+    "statTotalRestaurants": "المطاعم",
+    "statActiveRestaurants": "مطاعم نشطة",
+    "statPendingRestaurants": "بانتظار الموافقة",
+    "statOrdersToday": "طلبات اليوم",
+    "salesChart": "الإيرادات عبر الزمن",
+    "liveActivity": "نشاط مباشر",
+    "noActivity": "لا يوجد نشاط بعد"
+  },
+  "restaurants": {
+    "title": "المطاعم",
+    "allStatuses": "كل الحالات",
+    "allCategories": "كل الفئات",
+    "name": "المطعم",
+    "owner": "المالك",
+    "city": "المدينة",
+    "status": "الحالة",
+    "detail": {
+      "phone": "الهاتف",
+      "hours": "ساعات العمل",
+      "rating": "التقييم",
+      "deliveryFee": "رسوم التوصيل",
+      "minOrder": "الحد الأدنى للطلب",
+      "prepTime": "متوسط وقت التحضير",
+      "openNow": "مفتوح الآن",
+      "menuPreview": "معاينة القائمة",
+      "itemCount_one": "{{count}} صنف",
+      "itemCount_other": "{{count}} أصناف",
+      "viewPublicPage": "عرض الصفحة العامة ←"
+    }
+  },
+  "restaurantStatusUpdated": {
+    "APPROVED": "تمت الموافقة على المطعم",
+    "REJECTED": "تم رفض المطعم",
+    "SUSPENDED": "تم إيقاف المطعم"
+  },
+  "users": {
+    "title": "المستخدمون",
+    "allRoles": "كل الأدوار",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "joined": "تاريخ الانضمام",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "موقوف",
+    "activated": "تم تفعيل المستخدم",
+    "suspended": "تم إيقاف المستخدم"
+  },
+  "categories": {
+    "title": "الفئات",
+    "add": "إضافة فئة",
+    "edit": "تعديل الفئة",
+    "name": "الاسم (إنجليزي)",
+    "nameAr": "الاسم (عربي)",
+    "slug": "المعرّف (slug)",
+    "slugHint": "أحرف إنجليزية صغيرة وأرقام وشرطات فقط",
+    "icon": "الأيقونة (إيموجي)",
+    "sortOrder": "ترتيب العرض",
+    "deleteConfirm": "حذف فئة \"{{name}}\"؟ سيتم إزالتها من كل مطعم يستخدمها."
+  },
+  "orders": {
+    "title": "الطلبات",
+    "allRestaurants": "كل المطاعم",
+    "orderNumber": "رقم الطلب",
+    "customer": "العميل",
+    "restaurant": "المطعم",
+    "city": "المدينة",
+    "total": "الإجمالي",
+    "status": "الحالة",
+    "placed": "وقت الطلب"
+  },
+  "reports": {
+    "title": "تقارير المنصة",
+    "groupByDay": "يوم",
+    "groupByWeek": "أسبوع",
+    "groupByMonth": "شهر",
+    "cityPlaceholder": "المدينة",
+    "topRestaurants": "أفضل المطاعم",
+    "topCategories": "أفضل الفئات",
+    "ordersByStatus": "الطلبات حسب الحالة",
+    "newSignups": "تسجيلات جديدة",
+    "noData": "لا توجد بيانات لهذه الفترة"
   }
 }

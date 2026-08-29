@@ -6,5 +6,94 @@
     "categories": "Categories",
     "orders": "Orders",
     "reports": "Reports"
+  },
+  "overview": {
+    "title": "Platform Overview",
+    "statTotalOrders": "Total Orders",
+    "statRevenue": "Total Revenue",
+    "statAvgOrder": "Avg. Order Value",
+    "statCustomers": "Customers",
+    "statTotalRestaurants": "Restaurants",
+    "statActiveRestaurants": "Active Restaurants",
+    "statPendingRestaurants": "Pending Approval",
+    "statOrdersToday": "Orders Today",
+    "salesChart": "Revenue Over Time",
+    "liveActivity": "Live Activity",
+    "noActivity": "No activity yet"
+  },
+  "restaurants": {
+    "title": "Restaurants",
+    "allStatuses": "All Statuses",
+    "allCategories": "All Categories",
+    "name": "Restaurant",
+    "owner": "Owner",
+    "city": "City",
+    "status": "Status",
+    "detail": {
+      "phone": "Phone",
+      "hours": "Hours",
+      "rating": "Rating",
+      "deliveryFee": "Delivery Fee",
+      "minOrder": "Min. Order",
+      "prepTime": "Avg. Prep Time",
+      "openNow": "Open Now",
+      "menuPreview": "Menu Preview",
+      "itemCount_one": "{{count}} item",
+      "itemCount_other": "{{count}} items",
+      "viewPublicPage": "View public page →"
+    }
+  },
+  "restaurantStatusUpdated": {
+    "APPROVED": "Restaurant approved",
+    "REJECTED": "Restaurant rejected",
+    "SUSPENDED": "Restaurant suspended"
+  },
+  "users": {
+    "title": "Users",
+    "allRoles": "All Roles",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "joined": "Joined",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Suspended",
+    "activated": "User reactivated",
+    "suspended": "User suspended"
+  },
+  "categories": {
+    "title": "Categories",
+    "add": "Add Category",
+    "edit": "Edit Category",
+    "name": "Name (English)",
+    "nameAr": "Name (Arabic)",
+    "slug": "Slug",
+    "slugHint": "Lowercase letters, numbers and hyphens only",
+    "icon": "Icon (emoji)",
+    "sortOrder": "Sort Order",
+    "deleteConfirm": "Delete category \"{{name}}\"? This removes it from every restaurant that uses it."
+  },
+  "orders": {
+    "title": "Orders",
+    "allRestaurants": "All Restaurants",
+    "orderNumber": "Order #",
+    "customer": "Customer",
+    "restaurant": "Restaurant",
+    "city": "City",
+    "total": "Total",
+    "status": "Status",
+    "placed": "Placed"
+  },
+  "reports": {
+    "title": "Platform Reports",
+    "groupByDay": "Day",
+    "groupByWeek": "Week",
+    "groupByMonth": "Month",
+    "cityPlaceholder": "City",
+    "topRestaurants": "Top Restaurants",
+    "topCategories": "Top Categories",
+    "ordersByStatus": "Orders by Status",
+    "newSignups": "New Signups",
+    "noData": "No data for this range"
   }
 }

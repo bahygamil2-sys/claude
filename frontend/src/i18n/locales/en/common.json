@@ -42,7 +42,14 @@
     "notFound": "Not found",
     "empty": "Nothing here yet",
     "unauthorized": "You don't have access to this page",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "pagination": {
+    "summary": "Page {{page}} of {{totalPages}} · {{total}} total",
+    "previous": "Previous",
+    "next": "Next"
   },
   "orderStatus": {
     "PENDING": "Pending",

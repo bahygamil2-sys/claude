@@ -22,6 +22,13 @@ import RestaurantOrderDetailPage from "@/features/restaurant-dashboard/Restauran
 import MenuManagementPage from "@/features/restaurant-dashboard/MenuManagementPage";
 import RestaurantReportsPage from "@/features/restaurant-dashboard/RestaurantReportsPage";
 import RestaurantSettingsPage from "@/features/restaurant-dashboard/RestaurantSettingsPage";
+import AdminOverviewPage from "@/features/admin/AdminOverviewPage";
+import AdminRestaurantsPage from "@/features/admin/AdminRestaurantsPage";
+import AdminRestaurantDetailPage from "@/features/admin/AdminRestaurantDetailPage";
+import AdminUsersPage from "@/features/admin/AdminUsersPage";
+import AdminCategoriesPage from "@/features/admin/AdminCategoriesPage";
+import AdminOrdersPage from "@/features/admin/AdminOrdersPage";
+import AdminReportsPage from "@/features/admin/AdminReportsPage";
 import { RequireAuth } from "./RequireAuth";
 import { RequireRole } from "./RequireRole";
 
@@ -106,13 +113,13 @@ export function AppRoutes() {
           </RequireRole>
         }
       >
-        <Route index element={<PlaceholderPage title="Overview" />} />
-        <Route path="restaurants" element={<PlaceholderPage title="Restaurants" />} />
-        <Route path="restaurants/:id" element={<PlaceholderPage title="Restaurant Detail" />} />
-        <Route path="users" element={<PlaceholderPage title="Users" />} />
-        <Route path="categories" element={<PlaceholderPage title="Categories" />} />
-        <Route path="orders" element={<PlaceholderPage title="Orders" />} />
-        <Route path="reports" element={<PlaceholderPage title="Reports" />} />
+        <Route index element={<AdminOverviewPage />} />
+        <Route path="restaurants" element={<AdminRestaurantsPage />} />
+        <Route path="restaurants/:id" element={<AdminRestaurantDetailPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
+        <Route path="categories" element={<AdminCategoriesPage />} />
+        <Route path="orders" element={<AdminOrdersPage />} />
+        <Route path="reports" element={<AdminReportsPage />} />
       </Route>
 
       <Route path="/unauthorized" element={<PlaceholderPage title="403 — Unauthorized" />} />

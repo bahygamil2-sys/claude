@@ -42,7 +42,14 @@
     "notFound": "غير موجود",
     "empty": "لا يوجد شيء هنا بعد",
     "unauthorized": "ليس لديك صلاحية الوصول لهذه الصفحة",
-    "tryAgain": "حاول مرة أخرى"
+    "tryAgain": "حاول مرة أخرى",
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "pagination": {
+    "summary": "صفحة {{page}} من {{totalPages}} · {{total}} إجمالي",
+    "previous": "السابق",
+    "next": "التالي"
   },
   "orderStatus": {
     "PENDING": "قيد الانتظار",

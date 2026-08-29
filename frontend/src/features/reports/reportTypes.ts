@@ -80,3 +80,9 @@ export interface LiveActivityItem {
   customerName: string;
   at: string;
 }
+
+export interface AdminScopeParams {
+  city?: string;
+  categoryId?: string;
+  restaurantId?: string;
+}
