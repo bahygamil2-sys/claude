@@ -1,0 +1,311 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum BrandRole {
+  OWNER
+  MANAGER
+}
+
+enum BrandUserStatus {
+  ACTIVE
+  INVITED
+  DISABLED
+}
+
+enum BrandStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum SurveyStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+enum SurveyScope {
+  ALL_BRANCHES
+  SPECIFIC_BRANCHES
+}
+
+enum QuestionType {
+  SHORT_TEXT
+  LONG_TEXT
+  SINGLE_CHOICE
+  MULTI_CHOICE
+  DROPDOWN
+  RATING
+  NPS
+  YES_NO
+  DATE
+}
+
+// ---------------------------------------------------------------------------
+// Platform admin (seeded only, never self-registers)
+// ---------------------------------------------------------------------------
+
+model PlatformAdmin {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  refreshTokens AdminRefreshToken[]
+}
+
+model AdminRefreshToken {
+  id        String    @id @default(uuid())
+  adminId   String
+  admin     PlatformAdmin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  tokenHash String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([adminId])
+}
+
+// ---------------------------------------------------------------------------
+// Brand (a business — owns a chain of restaurant branches)
+// ---------------------------------------------------------------------------
+
+model Brand {
+  id              String      @id @default(uuid())
+  name            String
+  nameAr          String
+  logoUrl         String?
+  description     String?
+  descriptionAr   String?
+  status          BrandStatus @default(ACTIVE)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  users    BrandUser[]
+  branches RestaurantBranch[]
+  surveys  Survey[]
+}
+
+model BrandUser {
+  id                   String          @id @default(uuid())
+  brandId              String
+  brand                Brand           @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  email                String          @unique
+  passwordHash         String?
+  name                 String
+  role                 BrandRole
+  status               BrandUserStatus @default(ACTIVE)
+  inviteToken          String?         @unique
+  inviteTokenExpiresAt DateTime?
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  branchAccess    BrandUserBranch[]
+  refreshTokens   BrandUserRefreshToken[]
+  createdSurveys  Survey[]
+
+  @@index([brandId])
+}
+
+// Only populated for MANAGER role — which branches they're allowed to see.
+model BrandUserBranch {
+  id          String          @id @default(uuid())
+  brandUserId String
+  brandUser   BrandUser       @relation(fields: [brandUserId], references: [id], onDelete: Cascade)
+  branchId    String
+  branch      RestaurantBranch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@unique([brandUserId, branchId])
+  @@index([branchId])
+}
+
+model BrandUserRefreshToken {
+  id          String    @id @default(uuid())
+  brandUserId String
+  brandUser   BrandUser @relation(fields: [brandUserId], references: [id], onDelete: Cascade)
+  tokenHash   String
+  expiresAt   DateTime
+  revokedAt   DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([brandUserId])
+}
+
+// ---------------------------------------------------------------------------
+// Restaurant branches (locations under a brand)
+// ---------------------------------------------------------------------------
+
+model RestaurantBranch {
+  id        String   @id @default(uuid())
+  brandId   String
+  brand     Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  name      String
+  nameAr    String
+  address   String
+  addressAr String
+  city      String
+  cityAr    String
+  phone     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userAccess   BrandUserBranch[]
+  surveyScopes SurveyBranch[]
+  surveyLinks  SurveyBranchLink[]
+  responses    Response[]
+
+  @@index([brandId])
+}
+
+// ---------------------------------------------------------------------------
+// Surveys
+// ---------------------------------------------------------------------------
+
+model Survey {
+  id                 String       @id @default(uuid())
+  brandId            String
+  brand              Brand        @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  title              String
+  titleAr            String
+  description        String?
+  descriptionAr      String?
+  thankYouMessage    String?
+  thankYouMessageAr  String?
+  status             SurveyStatus @default(DRAFT)
+  scopeType          SurveyScope  @default(ALL_BRANCHES)
+  createdByUserId    String?
+  createdByUser      BrandUser?   @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  questions    Question[]
+  branchScopes SurveyBranch[]
+  links        SurveyBranchLink[]
+  responses    Response[]
+
+  @@index([brandId])
+  @@index([brandId, status])
+}
+
+// Only populated when scopeType = SPECIFIC_BRANCHES.
+model SurveyBranch {
+  id       String           @id @default(uuid())
+  surveyId String
+  survey   Survey           @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  branchId String
+  branch   RestaurantBranch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@unique([surveyId, branchId])
+  @@index([branchId])
+}
+
+// One row per (survey, branch) — the single source for the QR image, the
+// copy-link, and the WhatsApp/SMS share text. Regenerating rotates `token`
+// in place rather than creating a new row.
+model SurveyBranchLink {
+  id        String           @id @default(uuid())
+  surveyId  String
+  survey    Survey           @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  branchId  String
+  branch    RestaurantBranch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  token     String           @unique
+  isActive  Boolean          @default(true)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@unique([surveyId, branchId])
+}
+
+model Question {
+  id          String       @id @default(uuid())
+  surveyId    String
+  survey      Survey       @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  type        QuestionType
+  label       String
+  labelAr     String
+  helpText    String?
+  helpTextAr  String?
+  isRequired  Boolean      @default(true)
+  sortOrder   Int
+  // Type-specific settings (e.g. star max for RATING, inputStyle variant) —
+  // read-and-rendered only, never filtered/queried on, so JSON is the right
+  // fit here rather than a wide sparsely-populated column set.
+  config      Json         @default("{}")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  options QuestionOption[]
+  answers Answer[]
+
+  @@index([surveyId, sortOrder])
+}
+
+// Only for SINGLE_CHOICE / MULTI_CHOICE / DROPDOWN questions.
+model QuestionOption {
+  id         String   @id @default(uuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  label      String
+  labelAr    String
+  // Stable machine key, independent of the display label — renaming a label
+  // later doesn't retroactively corrupt historical answer/report continuity.
+  value      String
+  sortOrder  Int
+  createdAt  DateTime @default(now())
+
+  answers Answer[]
+
+  @@index([questionId, sortOrder])
+}
+
+// ---------------------------------------------------------------------------
+// Responses (anonymous, always branch-attributed)
+// ---------------------------------------------------------------------------
+
+model Response {
+  id          String           @id @default(uuid())
+  surveyId    String
+  survey      Survey           @relation(fields: [surveyId], references: [id], onDelete: Restrict)
+  branchId    String
+  branch      RestaurantBranch @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  submittedAt DateTime         @default(now())
+  ipHash      String?
+  userAgent   String?
+  createdAt   DateTime         @default(now())
+
+  answers Answer[]
+
+  @@index([surveyId, branchId, submittedAt])
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  responseId String
+  response   Response @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  // Named-object JSON per question type, e.g. {"text":"..."}, {"optionIds":[...]},
+  // {"rating":4}, {"nps":8}, {"boolean":true}, {"date":"2026-08-29"} — validated
+  // by a shared zod discriminated union keyed on question.type before insert.
+  value      Json
+  // Only meaningful for SINGLE_CHOICE/DROPDOWN answers — lets reporting join
+  // straight to the chosen option without unpacking `value` first.
+  optionId   String?
+  option     QuestionOption? @relation(fields: [optionId], references: [id], onDelete: SetNull)
+  createdAt  DateTime @default(now())
+
+  @@unique([responseId, questionId])
+  @@index([questionId])
+}
