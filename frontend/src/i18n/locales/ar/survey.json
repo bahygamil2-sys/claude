@@ -64,5 +64,39 @@
   },
   "questionTypePicker": {
     "title": "إضافة سؤال"
+  },
+  "links": {
+    "title": "الروابط ورموز QR",
+    "copied": "تم نسخ الرابط",
+    "download": "تحميل رمز QR",
+    "regenerated": "تم إعادة توليد الرابط",
+    "regenerateWarning": "إعادة التوليد تستبدل رمز QR والرابط — أي نسخ مطبوعة ستتوقف عن العمل.",
+    "empty": "لا توجد فروع نشطة لإنشاء روابط لها بعد."
+  },
+  "analytics": {
+    "title": "التحليلات",
+    "totalResponses": "إجمالي الردود",
+    "responsesOverTime": "الردود عبر الوقت",
+    "responsesTooltip": "الردود",
+    "filterBranch": "الفرع",
+    "allBranches": "كل الفروع",
+    "filterFrom": "من",
+    "filterTo": "إلى",
+    "exportCsv": "تصدير CSV",
+    "exportExcel": "تصدير Excel",
+    "noResponses": "لا توجد ردود على هذا الاستبيان بعد.",
+    "responseCount": "{{count}} ردود",
+    "average": "المتوسط",
+    "npsScore": "مؤشر NPS",
+    "promoters": "المروّجون",
+    "passives": "المحايدون",
+    "detractors": "المنتقدون",
+    "yes": "نعم",
+    "no": "لا",
+    "responsesTable": "الردود",
+    "viewDetails": "عرض",
+    "branch": "الفرع",
+    "submittedAt": "تاريخ الإرسال",
+    "responseDetail": "تفاصيل الرد"
   }
 }

@@ -11,19 +11,21 @@ import survey_ar from "./locales/ar/survey.json";
 import survey_en from "./locales/en/survey.json";
 import public_ar from "./locales/ar/public.json";
 import public_en from "./locales/en/public.json";
+import admin_ar from "./locales/ar/admin.json";
+import admin_en from "./locales/en/admin.json";
 
 export const SUPPORTED_LANGUAGES = ["ar", "en"] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 i18n.use(initReactI18next).init({
   resources: {
-    ar: { common: common_ar, auth: auth_ar, dashboard: dashboard_ar, survey: survey_ar, public: public_ar },
-    en: { common: common_en, auth: auth_en, dashboard: dashboard_en, survey: survey_en, public: public_en },
+    ar: { common: common_ar, auth: auth_ar, dashboard: dashboard_ar, survey: survey_ar, public: public_ar, admin: admin_ar },
+    en: { common: common_en, auth: auth_en, dashboard: dashboard_en, survey: survey_en, public: public_en, admin: admin_en },
   },
   lng: "ar",
   fallbackLng: "en",
   defaultNS: "common",
-  ns: ["common", "auth", "dashboard", "survey", "public"],
+  ns: ["common", "auth", "dashboard", "survey", "public", "admin"],
   interpolation: { escapeValue: false },
   returnEmptyString: false,
 });

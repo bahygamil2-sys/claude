@@ -1,0 +1,29 @@
+{
+  "overview": {
+    "title": "Platform Overview",
+    "brands": "Brands",
+    "branches": "Branches",
+    "surveys": "Surveys",
+    "responses": "Responses"
+  },
+  "brands": {
+    "title": "Brands",
+    "search": "Search brands…",
+    "allStatuses": "All statuses",
+    "empty": "No brands match your filters.",
+    "branches": "{{count}} branches",
+    "surveys": "{{count}} surveys",
+    "users": "{{count}} team members"
+  },
+  "brandDetail": {
+    "back": "Back to Brands",
+    "branches": "Branches",
+    "team": "Team",
+    "surveysCount": "Surveys",
+    "suspend": "Suspend Brand",
+    "activate": "Activate Brand",
+    "suspended": "Brand suspended",
+    "activated": "Brand activated",
+    "confirmSuspend": "Suspend this brand? Its team will be unable to log in until reactivated."
+  }
+}

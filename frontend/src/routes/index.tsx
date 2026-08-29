@@ -18,6 +18,12 @@ import SettingsPage from "@/features/brand/SettingsPage";
 import TeamPage from "@/features/team/TeamPage";
 import SurveysListPage from "@/features/surveys/SurveysListPage";
 import SurveyBuilderPage from "@/features/surveys/SurveyBuilderPage";
+import SurveyLinksPage from "@/features/surveys/SurveyLinksPage";
+import AnalyticsPage from "@/features/surveys/AnalyticsPage";
+import AdminLoginPage from "@/features/admin/AdminLoginPage";
+import AdminOverviewPage from "@/features/admin/AdminOverviewPage";
+import AdminBrandsPage from "@/features/admin/AdminBrandsPage";
+import AdminBrandDetailPage from "@/features/admin/AdminBrandDetailPage";
 
 // Its own chunk: a respondent scanning a QR code on their phone should never
 // download the brand/admin dashboard bundle to see this page.
@@ -32,7 +38,7 @@ export function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/accept-invite/:token" element={<AcceptInvitePage />} />
-        <Route path="/admin/login" element={<PlaceholderPage title="Admin Login" />} />
+        <Route path="/admin/login" element={<AdminLoginPage />} />
       </Route>
 
       <Route element={<PublicSurveyLayout />}>
@@ -57,8 +63,8 @@ export function AppRoutes() {
         <Route path="/branches" element={<BranchesPage />} />
         <Route path="/surveys" element={<SurveysListPage />} />
         <Route path="/surveys/:id/edit" element={<SurveyBuilderPage />} />
-        <Route path="/surveys/:id/links" element={<PlaceholderPage title="Survey Links" />} />
-        <Route path="/surveys/:id/analytics" element={<PlaceholderPage title="Survey Analytics" />} />
+        <Route path="/surveys/:id/links" element={<SurveyLinksPage />} />
+        <Route path="/surveys/:id/analytics" element={<AnalyticsPage />} />
         <Route
           path="/team"
           element={
@@ -77,9 +83,9 @@ export function AppRoutes() {
           </RequireAdmin>
         }
       >
-        <Route path="/admin/dashboard" element={<PlaceholderPage title="Admin Dashboard" />} />
-        <Route path="/admin/brands" element={<PlaceholderPage title="Admin Brands" />} />
-        <Route path="/admin/brands/:id" element={<PlaceholderPage title="Admin Brand Detail" />} />
+        <Route path="/admin/dashboard" element={<AdminOverviewPage />} />
+        <Route path="/admin/brands" element={<AdminBrandsPage />} />
+        <Route path="/admin/brands/:id" element={<AdminBrandDetailPage />} />
       </Route>
 
       <Route path="/unauthorized" element={<PlaceholderPage title="403 — Unauthorized" />} />

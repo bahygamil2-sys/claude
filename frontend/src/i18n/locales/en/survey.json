@@ -64,5 +64,39 @@
   },
   "questionTypePicker": {
     "title": "Add a question"
+  },
+  "links": {
+    "title": "Links & QR Codes",
+    "copied": "Link copied",
+    "download": "Download QR",
+    "regenerated": "Link regenerated",
+    "regenerateWarning": "Regenerating replaces the QR code and link — any printed copies will stop working.",
+    "empty": "No active branches to generate links for yet."
+  },
+  "analytics": {
+    "title": "Analytics",
+    "totalResponses": "Total Responses",
+    "responsesOverTime": "Responses Over Time",
+    "responsesTooltip": "Responses",
+    "filterBranch": "Branch",
+    "allBranches": "All branches",
+    "filterFrom": "From",
+    "filterTo": "To",
+    "exportCsv": "Export CSV",
+    "exportExcel": "Export Excel",
+    "noResponses": "No responses yet for this survey.",
+    "responseCount": "{{count}} responses",
+    "average": "average",
+    "npsScore": "NPS Score",
+    "promoters": "Promoters",
+    "passives": "Passives",
+    "detractors": "Detractors",
+    "yes": "Yes",
+    "no": "No",
+    "responsesTable": "Responses",
+    "viewDetails": "View",
+    "branch": "Branch",
+    "submittedAt": "Submitted",
+    "responseDetail": "Response Detail"
   }
 }
