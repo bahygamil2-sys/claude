@@ -1,0 +1,18 @@
+{
+  "notFound": "This link doesn't seem to be valid.",
+  "notYetAvailable": "This feedback form isn't available yet. Please check back later.",
+  "noLongerAccepting": "This feedback form is no longer accepting responses. Thank you for your interest!",
+  "thankYouTitle": "Thank you!",
+  "thankYouDefault": "Your feedback has been submitted.",
+  "submit": "Submit",
+  "selectOption": "Select an option",
+  "rateLimited": "You've submitted a few responses already — please try again a bit later.",
+  "submitError": "Something went wrong submitting your response. Please try again.",
+  "errors": {
+    "required": "This question is required",
+    "invalid": "Please provide a valid answer",
+    "tooMany": "You've selected too many options"
+  },
+  "yes": "Yes",
+  "no": "No"
+}
