@@ -1,0 +1,63 @@
+{
+  "overview": {
+    "title": "لوحة التحكم",
+    "welcome": "أهلاً بعودتك، {{name}}",
+    "branches": "الفروع",
+    "surveys": "الاستبيانات",
+    "publishedSurveys": "استبيانات منشورة",
+    "totalResponses": "إجمالي الردود",
+    "quickLinks": "روابط سريعة",
+    "manageBranches": "إدارة الفروع",
+    "manageSurveys": "إدارة الاستبيانات",
+    "manageTeam": "إدارة الفريق"
+  },
+  "branches": {
+    "title": "الفروع",
+    "addBranch": "إضافة فرع",
+    "editBranch": "تعديل الفرع",
+    "name": "الاسم",
+    "nameAr": "الاسم (عربي)",
+    "address": "العنوان",
+    "addressAr": "العنوان (عربي)",
+    "city": "المدينة",
+    "cityAr": "المدينة (عربي)",
+    "phone": "الهاتف (اختياري)",
+    "isActive": "نشط",
+    "isInactive": "غير نشط",
+    "inactiveHint": "الفروع غير النشطة لا تستقبل روابط استبيان جديدة",
+    "empty": "لا توجد فروع بعد — أضف فرعك الأول لبدء جمع الملاحظات.",
+    "saved": "تم حفظ الفرع"
+  },
+  "settings": {
+    "title": "إعدادات العلامة التجارية",
+    "basicInfo": "المعلومات الأساسية",
+    "name": "الاسم",
+    "nameAr": "الاسم (عربي)",
+    "description": "الوصف",
+    "descriptionAr": "الوصف (عربي)",
+    "logoUrl": "رابط الشعار",
+    "readOnlyHint": "يمكن لمالك العلامة التجارية فقط تعديل هذه الإعدادات.",
+    "saved": "تم حفظ الإعدادات"
+  },
+  "team": {
+    "title": "الفريق",
+    "inviteManager": "دعوة مدير فرع",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "status": "الحالة",
+    "branchAccess": "صلاحية الوصول للفروع",
+    "editAccess": "تعديل الصلاحية",
+    "inviteSent": "تم إنشاء الدعوة — شارك الرابط أدناه معهم",
+    "inviteLink": "رابط الدعوة",
+    "empty": "لا يوجد مديرو فروع بعد — ادعُ أحدهم للمساعدة في إدارة فروعك.",
+    "selectBranches": "اختر الفروع التي يمكن لهذا المدير الوصول إليها",
+    "noBranchesSelected": "اختر فرعًا واحدًا على الأقل",
+    "statusActive": "نشط",
+    "statusInvited": "الدعوة معلقة",
+    "statusDisabled": "معطل",
+    "disable": "تعطيل",
+    "reactivate": "إعادة تفعيل",
+    "accessUpdated": "تم تحديث الصلاحية"
+  }
+}

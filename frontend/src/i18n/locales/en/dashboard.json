@@ -1,0 +1,63 @@
+{
+  "overview": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {{name}}",
+    "branches": "Branches",
+    "surveys": "Surveys",
+    "publishedSurveys": "Published Surveys",
+    "totalResponses": "Total Responses",
+    "quickLinks": "Quick links",
+    "manageBranches": "Manage Branches",
+    "manageSurveys": "Manage Surveys",
+    "manageTeam": "Manage Team"
+  },
+  "branches": {
+    "title": "Branches",
+    "addBranch": "Add Branch",
+    "editBranch": "Edit Branch",
+    "name": "Name",
+    "nameAr": "Name (Arabic)",
+    "address": "Address",
+    "addressAr": "Address (Arabic)",
+    "city": "City",
+    "cityAr": "City (Arabic)",
+    "phone": "Phone (optional)",
+    "isActive": "Active",
+    "isInactive": "Inactive",
+    "inactiveHint": "Inactive branches don't receive new survey links",
+    "empty": "No branches yet — add your first one to start collecting feedback.",
+    "saved": "Branch saved"
+  },
+  "settings": {
+    "title": "Brand Settings",
+    "basicInfo": "Basic Information",
+    "name": "Name",
+    "nameAr": "Name (Arabic)",
+    "description": "Description",
+    "descriptionAr": "Description (Arabic)",
+    "logoUrl": "Logo URL",
+    "readOnlyHint": "Only the brand owner can edit these settings.",
+    "saved": "Settings saved"
+  },
+  "team": {
+    "title": "Team",
+    "inviteManager": "Invite Manager",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "branchAccess": "Branch Access",
+    "editAccess": "Edit Access",
+    "inviteSent": "Invite created — share the link below with them",
+    "inviteLink": "Invite link",
+    "empty": "No managers yet — invite one to help manage your branches.",
+    "selectBranches": "Select the branches this manager can access",
+    "noBranchesSelected": "Select at least one branch",
+    "statusActive": "Active",
+    "statusInvited": "Invite Pending",
+    "statusDisabled": "Disabled",
+    "disable": "Disable",
+    "reactivate": "Reactivate",
+    "accessUpdated": "Access updated"
+  }
+}

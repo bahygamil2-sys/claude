@@ -9,6 +9,13 @@ import { FullPageSpinner } from "@/components/Spinner";
 import { RequireBrandUser } from "./RequireBrandUser";
 import { RequireBrandRole } from "./RequireBrandRole";
 import { RequireAdmin } from "./RequireAdmin";
+import LoginPage from "@/features/auth/LoginPage";
+import SignupPage from "@/features/auth/SignupPage";
+import AcceptInvitePage from "@/features/auth/AcceptInvitePage";
+import DashboardOverviewPage from "@/features/dashboard/DashboardOverviewPage";
+import BranchesPage from "@/features/branches/BranchesPage";
+import SettingsPage from "@/features/brand/SettingsPage";
+import TeamPage from "@/features/team/TeamPage";
 
 // Its own chunk: a respondent scanning a QR code on their phone should never
 // download the brand/admin dashboard bundle to see this page.
@@ -20,9 +27,9 @@ export function AppRoutes() {
       <Route path="/" element={<Navigate to="/login" replace />} />
 
       <Route element={<AuthLayout />}>
-        <Route path="/login" element={<PlaceholderPage title="Login" />} />
-        <Route path="/signup" element={<PlaceholderPage title="Signup" />} />
-        <Route path="/accept-invite/:token" element={<PlaceholderPage title="Accept Invite" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/accept-invite/:token" element={<AcceptInvitePage />} />
         <Route path="/admin/login" element={<PlaceholderPage title="Admin Login" />} />
       </Route>
 
@@ -44,8 +51,8 @@ export function AppRoutes() {
           </RequireBrandUser>
         }
       >
-        <Route path="/dashboard" element={<PlaceholderPage title="Dashboard" />} />
-        <Route path="/branches" element={<PlaceholderPage title="Branches" />} />
+        <Route path="/dashboard" element={<DashboardOverviewPage />} />
+        <Route path="/branches" element={<BranchesPage />} />
         <Route path="/surveys" element={<PlaceholderPage title="Surveys" />} />
         <Route path="/surveys/:id/edit" element={<PlaceholderPage title="Survey Builder" />} />
         <Route path="/surveys/:id/links" element={<PlaceholderPage title="Survey Links" />} />
@@ -54,11 +61,11 @@ export function AppRoutes() {
           path="/team"
           element={
             <RequireBrandRole roles={["OWNER"]}>
-              <PlaceholderPage title="Team" />
+              <TeamPage />
             </RequireBrandRole>
           }
         />
-        <Route path="/settings" element={<PlaceholderPage title="Settings" />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       <Route
