@@ -86,7 +86,7 @@ export function DashboardShell({
 
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-3">
-          <button className="rounded-md p-1.5 text-neutral-600 hover:bg-neutral-100 md:hidden" onClick={() => setMobileOpen(true)}>
+          <button className="rounded-md p-1.5 text-neutral-600 hover:bg-neutral-100 md:hidden" onClick={() => setMobileOpen(true)} aria-label="open menu">
             <Menu size={20} />
           </button>
           <span className="hidden text-sm text-neutral-500 md:block">{sectionLabel}</span>
@@ -102,7 +102,10 @@ export function DashboardShell({
 
       {mobileOpen && (
         <button
-          className="fixed end-4 top-4 z-50 rounded-full bg-white p-2 shadow md:hidden"
+          // Anchored to the drawer's own outer edge (start-64 = right after its
+          // w-64 width) rather than the viewport's far edge, so it sits next to
+          // the drawer in both LTR and RTL instead of floating across the scrim.
+          className="fixed start-64 top-4 z-50 ms-3 rounded-full bg-white p-2 shadow md:hidden"
           onClick={() => setMobileOpen(false)}
           aria-label="close menu"
         >

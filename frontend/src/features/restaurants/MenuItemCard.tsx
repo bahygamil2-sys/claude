@@ -17,6 +17,7 @@ export function MenuItemCard({ item, restaurant }: { item: MenuItem; restaurant:
       <button
         onClick={() => item.isAvailable && setOpen(true)}
         disabled={!item.isAvailable}
+        data-testid="menu-item-card"
         className="flex w-full items-start gap-3 rounded-xl border border-neutral-200 bg-white p-3.5 text-start transition-shadow hover:shadow-sm disabled:opacity-60"
       >
         <div className="flex-1">

@@ -107,7 +107,7 @@ export function AddToCartModal({ item, restaurant, onClose }: { item: MenuItem; 
                 {group.isRequired ? t("restaurantDetail.requiredChoice") : t("restaurantDetail.optionalChoice", { max: group.maxSelect })}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5" data-testid="option-group-choices">
               {group.options.map((opt) => {
                 const checked = (selected[group.id] ?? []).includes(opt.id);
                 return (
@@ -137,6 +137,7 @@ export function AddToCartModal({ item, restaurant, onClose }: { item: MenuItem; 
           <div className="flex items-center gap-3">
             <button
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              data-testid="quantity-decrement"
               className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100"
             >
               <Minus size={14} />
@@ -144,6 +145,7 @@ export function AddToCartModal({ item, restaurant, onClose }: { item: MenuItem; 
             <span className="w-4 text-center font-medium">{quantity}</span>
             <button
               onClick={() => setQuantity((q) => Math.min(20, q + 1))}
+              data-testid="quantity-increment"
               className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-100"
             >
               <Plus size={14} />

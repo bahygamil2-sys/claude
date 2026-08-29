@@ -44,16 +44,16 @@ export default function AdminCategoriesPage() {
       ) : sorted.length > 0 ? (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {sorted.map((c) => (
-            <div key={c.id} className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4">
+            <div key={c.id} data-testid="category-card" className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-xl">{c.icon || "🍽️"}</span>
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium text-neutral-800">{pick(c.name, c.nameAr)}</p>
                 <p className="truncate text-xs text-neutral-400">{c.slug}</p>
               </div>
-              <button onClick={() => setModal(c)} className="shrink-0 rounded-full p-1.5 text-neutral-400 hover:bg-neutral-100 hover:text-brand-600">
+              <button onClick={() => setModal(c)} aria-label={t("common:actions.edit")} className="shrink-0 rounded-full p-1.5 text-neutral-400 hover:bg-neutral-100 hover:text-brand-600">
                 <Pencil size={14} />
               </button>
-              <button onClick={() => onDelete(c)} className="shrink-0 rounded-full p-1.5 text-neutral-400 hover:bg-red-50 hover:text-red-500">
+              <button onClick={() => onDelete(c)} aria-label={t("common:actions.delete")} className="shrink-0 rounded-full p-1.5 text-neutral-400 hover:bg-red-50 hover:text-red-500">
                 <Trash2 size={14} />
               </button>
             </div>
