@@ -16,6 +16,8 @@ import DashboardOverviewPage from "@/features/dashboard/DashboardOverviewPage";
 import BranchesPage from "@/features/branches/BranchesPage";
 import SettingsPage from "@/features/brand/SettingsPage";
 import TeamPage from "@/features/team/TeamPage";
+import SurveysListPage from "@/features/surveys/SurveysListPage";
+import SurveyBuilderPage from "@/features/surveys/SurveyBuilderPage";
 
 // Its own chunk: a respondent scanning a QR code on their phone should never
 // download the brand/admin dashboard bundle to see this page.
@@ -53,8 +55,8 @@ export function AppRoutes() {
       >
         <Route path="/dashboard" element={<DashboardOverviewPage />} />
         <Route path="/branches" element={<BranchesPage />} />
-        <Route path="/surveys" element={<PlaceholderPage title="Surveys" />} />
-        <Route path="/surveys/:id/edit" element={<PlaceholderPage title="Survey Builder" />} />
+        <Route path="/surveys" element={<SurveysListPage />} />
+        <Route path="/surveys/:id/edit" element={<SurveyBuilderPage />} />
         <Route path="/surveys/:id/links" element={<PlaceholderPage title="Survey Links" />} />
         <Route path="/surveys/:id/analytics" element={<PlaceholderPage title="Survey Analytics" />} />
         <Route
