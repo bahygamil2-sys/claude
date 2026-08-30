@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bsd-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bsd
+      POSTGRES_PASSWORD: bsd_dev_password
+      POSTGRES_DB: bsd
+    ports:
+      - "5432:5432"
+    volumes:
+      - bsd_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bsd -d bsd"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  bsd_postgres_data:

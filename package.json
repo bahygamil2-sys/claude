@@ -1,0 +1,33 @@
+{
+  "name": "branch-sales-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Multi-brand restaurant sales dashboard — daily branch sales, Excel import, comparisons, RBAC.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f postgres",
+    "db:migrate": "npm run prisma:migrate -w backend",
+    "db:seed": "npm run prisma:seed -w backend",
+    "db:studio": "npm run prisma:studio -w backend",
+    "db:reset": "npm run prisma:reset -w backend",
+    "setup": "npm install && npm run db:up && npm run db:wait && npm run db:migrate && npm run db:seed",
+    "db:wait": "node scripts/wait-for-db.js",
+    "build": "npm run build -w backend && npm run build -w frontend",
+    "lint": "npm run lint -w backend && npm run lint -w frontend",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "concurrently": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Env
+.env
+.env.local
+*.env
+!.env.example
+
+# Build output
+dist/
+build/
+frontend/dist/
+backend/dist/
+
+# Uploaded workbooks / import storage (local dev)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Testing
+playwright-report/
+test-results/
+coverage/
+
+# Prisma
+backend/prisma/dev.db
+
+# TypeScript incremental build info / project-reference emit
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
