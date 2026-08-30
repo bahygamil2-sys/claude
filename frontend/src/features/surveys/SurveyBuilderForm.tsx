@@ -14,6 +14,7 @@ import { QuestionList } from "./QuestionList";
 import { AddQuestionMenu } from "./AddQuestionMenu";
 import { BranchScopePicker } from "./BranchScopePicker";
 import { SurveyPreviewPane } from "./SurveyPreviewPane";
+import { SurveyNavTabs } from "./SurveyNavTabs";
 import { draftToInput, newDraftQuestion, questionToDraft } from "./draftTypes";
 import type { DraftQuestion } from "./draftTypes";
 import { useCloseSurvey, useDuplicateSurvey, usePublishSurvey, useReplaceQuestions, useUpdateSurvey } from "./surveysApi";
@@ -161,6 +162,8 @@ export function SurveyBuilderForm({ survey, branches }: { survey: Survey; branch
           </div>
         )}
       </div>
+
+      <SurveyNavTabs surveyId={survey.id} />
 
       <div className="flex gap-1 border-b border-neutral-200">
         <button

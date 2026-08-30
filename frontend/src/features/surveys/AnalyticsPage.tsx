@@ -8,6 +8,7 @@ import { downloadSurveyExport, useQuestionReports, useSurveySummary, type Report
 import { ResponsesTrendChart } from "@/features/reports/ResponsesTrendChart";
 import { QuestionReportCard } from "@/features/reports/QuestionReportCard";
 import { ResponseTable } from "@/features/reports/ResponseTable";
+import { SurveyNavTabs } from "./SurveyNavTabs";
 import { useLocalized } from "@/hooks/useLocalized";
 import { Card, CardBody, CardHeader } from "@/components/Card";
 import { StatCard } from "@/components/StatCard";
@@ -65,6 +66,8 @@ export default function AnalyticsPage() {
 
   return (
     <div className="flex flex-col gap-4">
+      <SurveyNavTabs surveyId={survey.id} />
+
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-neutral-900">{pick(survey.title, survey.titleAr)}</h1>

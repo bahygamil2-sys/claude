@@ -8,6 +8,7 @@ import i18n from "@/i18n";
 import { AppRoutes } from "@/routes";
 import { ToastContainer } from "@/components/ToastContainer";
 import { FullPageSpinner } from "@/components/Spinner";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export default function App() {
   const language = useUIStore((s) => s.language);
@@ -26,11 +27,13 @@ export default function App() {
   if (!bootstrapped) return <FullPageSpinner />;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <AppRoutes />
-        <ToastContainer />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <AppRoutes />
+          <ToastContainer />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }

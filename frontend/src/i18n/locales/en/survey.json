@@ -1,4 +1,7 @@
 {
+  "nav": {
+    "builder": "Builder"
+  },
   "list": {
     "title": "Surveys",
     "createSurvey": "Create Survey",
