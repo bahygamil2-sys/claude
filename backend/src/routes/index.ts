@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { authRouter } from "../modules/auth/auth.routes";
 import { usersRouter } from "../modules/users/users.routes";
+import { brandsRouter } from "../modules/brands/brands.routes";
+import { branchesRouter } from "../modules/branches/branches.routes";
 
 export const v1Router = Router();
 
@@ -10,3 +12,5 @@ v1Router.get("/health", (_req, res) => {
 
 v1Router.use("/auth", authRouter);
 v1Router.use("/users", usersRouter);
+v1Router.use("/brands", brandsRouter);
+v1Router.use("/branches", branchesRouter);

@@ -30,9 +30,49 @@ model Brand {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  userAccess UserBrandAccess[]
+  userAccess    UserBrandAccess[]
+  branches      RestaurantBranch[]
+  branchAliases BranchNameAlias[]
 
   @@index([isActive])
+}
+
+model RestaurantBranch {
+  id           String    @id @default(cuid())
+  brandId      String
+  name         String
+  // Real "since when does this branch exist" date, not a nullable convenience
+  // — a branch simply has no sales rows before this, never a zero row. Set
+  // from the earliest real data date on first import if unknown upfront.
+  openedAt     DateTime  @db.Date
+  closedAt     DateTime? @db.Date
+  isActive     Boolean   @default(true)
+  displayOrder Int? // preserves the source Excel's column order in grid UIs
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  brand   Brand             @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  aliases BranchNameAlias[]
+
+  @@unique([brandId, name])
+  @@index([brandId, isActive])
+}
+
+// Known spelling variants of a branch name seen across source workbooks
+// (e.g. "مصر الجديدة" vs "مصر الجديده") — confirmed once by a human during
+// import, remembered forever after so it's never asked twice.
+model BranchNameAlias {
+  id             String   @id @default(cuid())
+  branchId       String
+  brandId        String // denormalized so the uniqueness scope below doesn't need a join
+  rawName        String
+  normalizedName String
+  createdAt      DateTime @default(now())
+
+  branch RestaurantBranch @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  brand  Brand            @relation(fields: [brandId], references: [id], onDelete: Cascade)
+
+  @@unique([brandId, normalizedName])
 }
 
 // ---------------------------------------------------------------------------

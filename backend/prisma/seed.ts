@@ -1,17 +1,32 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { normalizeBranchName } from "../src/lib/branchName";
 
 const prisma = new PrismaClient();
 
 const DEMO_PASSWORD = "Passw0rd!";
 
-// Seed grows through the project's phases (see the plan file). This first
-// pass — auth/users foundation only — creates the platform admin and the two
-// real brands the actual Excel workbooks belong to (El Reem, Kufta), plus one
-// Editor/Viewer each so RBAC scoping has something real to verify against.
-// Branches and sales data land in later phases.
+// Mirrors branches.service.ts's ensureAlias: every branch's own current name
+// is also its first alias row, so the (future) import matcher only ever has
+// to check one table.
+async function createBranch(brandId: string, name: string, openedAt: string) {
+  const branch = await prisma.restaurantBranch.create({ data: { brandId, name, openedAt: new Date(openedAt) } });
+  await prisma.branchNameAlias.create({
+    data: { branchId: branch.id, brandId, rawName: name, normalizedName: normalizeBranchName(name) },
+  });
+  return branch;
+}
+
+// Seed grows through the project's phases (see the plan file). This pass —
+// auth/users + brands/branches — creates the platform admin, the two real
+// brands the actual Excel workbooks belong to (El Reem, Kufta), a real subset
+// of each brand's actual branches (full import lands in the real-data-seeding
+// phase), and one Editor/Viewer each so RBAC scoping has something real to
+// verify against. Sales data lands in a later phase.
 async function main() {
   console.log("Wiping existing data...");
+  await prisma.branchNameAlias.deleteMany();
+  await prisma.restaurantBranch.deleteMany();
   await prisma.refreshToken.deleteMany();
   await prisma.userBrandAccess.deleteMany();
   await prisma.user.deleteMany();
@@ -32,6 +47,19 @@ async function main() {
   const kufta = await prisma.brand.create({
     data: { name: "Kufta", nameAr: "كفتة", slug: "kufta" },
   });
+
+  console.log("Seeding a real subset of each brand's branches...");
+  await Promise.all([
+    createBranch(elReem.id, "مصر الجديدة", "2020-01-01"),
+    createBranch(elReem.id, "الاهلى", "2020-01-01"),
+    createBranch(elReem.id, "شيراتون", "2020-01-01"),
+  ]);
+  await Promise.all([
+    createBranch(kufta.id, "شيراتون", "2019-01-01"),
+    createBranch(kufta.id, "التجمع", "2019-01-01"),
+    // Real mid-year opener from the source data — exercises "no rows before openedAt".
+    createBranch(kufta.id, "مول طنطا", "2026-06-01"),
+  ]);
 
   console.log("Seeding scoped Editor/Viewer...");
   const editor = await prisma.user.create({
